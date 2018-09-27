@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>留言板透明淡出</title>
+  <style>
+    #ul1{
+      width: 400px;
+      height:300px;
+      margin:10px auto;
+      border: 1px solid black;
+      overflow: hidden;
+    }
+    ul li {
+      border-bottom: 1px dashed #999;
+      padding: 4px;
+      filter: alpha(opacity:0);
+      opacity: 0;
+      list-style-type: none;
+      overflow :hidden;
+      }
+
+  </style>
+  <script src="move.js" charset="utf-8"></script>
+  <script type="text/javascript">
+      window.onload=function(){
+        var oBtn = document.getElementById('btn1');
+        var oTxarea = document.getElementById('txarea');
+        var oUl = document.getElementById('ul1');
+
+        oBtn.onclick = function(){
+          var li = document.createElement('li');
+          li.innerText = oTxarea.value;
+          if(oUl.children.length>0)
+          {
+            oUl.insertBefore(li,oUl.children[0]);
+          }
+          else
+          {
+            oUl.appendChild(li);
+          }
+
+          //运动
+    		var iHeight=li.offsetHeight;
+
+    		li.style.height='0';
+
+    		startMove(li, {height: iHeight}, function (){
+    			startMove(li, {opacity: 100});
+    		});
+        };
+
+
+      };
+
+  </script>
+</head>
+<body>
+  <textarea id="txarea" rows="8" cols="80"></textarea>
+  <input id="btn1" type="button"  value="submit"/>
+
+  <ul id="ul1">
+
+  </ul>
+</body>
+</html>
