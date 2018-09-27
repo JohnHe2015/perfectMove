@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <script src="move.js" charset="utf-8"></script>
   <style>
     #div1 {
       width: 200px;
@@ -20,20 +21,14 @@
 window.onload = function(){
   var oDiv = document.getElementById('div1');
   oDiv.onmouseover = function(){
-
+    startMove(oDiv,{'width':500,'opacity':100});
+  };
+  oDiv.onmouseout = function(){
+    startMove(oDiv,{'width':200,'opacity':30});
   };
 };
 
-    function startMove(obj,attr,value){
-      var timer = null;
-      clearInterval(timer);
-      timer = setInterval(function(){
 
-
-
-
-      },30);
-}
 
 
   </script>
